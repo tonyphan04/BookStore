@@ -33,6 +33,14 @@
 
             <v-card-text>
               <v-row align="center">
+                <v-rating
+                  :value="4.5"
+                  color="amber"
+                  dense
+                  half-increments
+                  readonly
+                  size="14"
+                ></v-rating>
                 <div class="grey--text">19$</div>
               </v-row>
 
@@ -50,13 +58,21 @@
               ></v-progress-linear>
             </template>
 
-            <v-img height="500" src="theRevolution.jpg"></v-img>
+            <v-img height="500" src="book2.jpg"></v-img>
 
-            <v-card-title>Cafe Badilico</v-card-title>
+            <v-card-title>The Intelligent Investor</v-card-title>
 
             <v-card-text>
               <v-row align="center">
-                <div class="grey--text">19$</div>
+                <v-rating
+                  :value="4.5"
+                  color="amber"
+                  dense
+                  half-increments
+                  readonly
+                  size="14"
+                ></v-rating>
+                <div class="grey--text">60$</div>
               </v-row>
 
               <div class="my-4 subtitle-1">Amazon AU</div>
@@ -73,13 +89,21 @@
               ></v-progress-linear>
             </template>
 
-            <v-img height="500" src="theRevolution.jpg"></v-img>
+            <v-img height="500" src="book3.png"></v-img>
 
-            <v-card-title>Cafe Badilico</v-card-title>
+            <v-card-title>A Brief History of Humankind</v-card-title>
 
             <v-card-text>
               <v-row align="center">
-                <div class="grey--text">19$</div>
+                <v-rating
+                  :value="4.5"
+                  color="amber"
+                  dense
+                  half-increments
+                  readonly
+                  size="14"
+                ></v-rating>
+                <div class="grey--text">36$</div>
               </v-row>
 
               <div class="my-4 subtitle-1">Amazon AU</div>
@@ -91,52 +115,74 @@
       <v-container fluid>
         <v-row dense>
           <v-col v-for="card in cards" :key="card.title" :cols="card.flex">
-            <v-card>
-              <v-img
-                class="white--text align-top"
-                :src="card.src"
-                height="300px"
-              >
-                <v-card-title v-text="card.title"></v-card-title>
-                <v-card-text v-text="card.text"></v-card-text>
-              </v-img>
-            </v-card>
+            <v-hover v-slot="{ hover }">
+              <v-card class="text-center">
+                <div id="block-advertisement-card">
+                  <v-card-text v-text="card.title"></v-card-text>
+                  <v-expand-transition>
+                    <div
+                      v-if="hover"
+                      class="transition-fast-in-fast-out text-center"
+                      style="height: 100%"
+                    >
+                      <span>
+                        <v-card-text v-text="card.text"></v-card-text
+                      ></span>
+                    </div>
+                  </v-expand-transition>
+                </div>
+
+                <!-- </v-img> -->
+              </v-card>
+            </v-hover>
           </v-col>
         </v-row>
       </v-container>
     </v-container>
     <!-- Footer -->
     <v-footer dark padless>
-      <v-card flat tile class="teal lighten-1 white--text">
+      <v-card class="teal lighten-1 white--text flex">
         <v-card-text class="white--text pt-0">
           <v-row>
-            <v-col sm="3" xs="3" lg="3"></v-col>
-
             <v-col sm="3" xs="3" lg="3">
-              Categories
+              Shopping guide
               <ul>
-                <li><v-btn dark icon>List 1</v-btn></li>
-                <li><v-btn dark icon>List 1</v-btn></li>
-                <li><v-btn dark icon>List 1</v-btn></li>
-                <li><v-btn dark icon>List 1</v-btn></li>
+                <li><p>Blog</p></li>
+                <li><p>FAQ</p></li>
+                <li><p>Payment</p></li>
+                <li><p>Shipment</p></li>
+              </ul>
+            </v-col>
+            <v-col sm="3" xs="3" lg="3">
+              Style advisor
+              <ul>
+                <li><p>Your account</p></li>
+                <li><p>Information</p></li>
+                <li><p>Address</p></li>
+                <li><p>Discount</p></li>
               </ul>
             </v-col>
 
             <v-col sm="3" xs="3" lg="3">
-              Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit
-              amet. Mauris cursus commodo interdum. Praesent ut risus eget metus
-              luctus accumsan id ultrices nunc. Sed at orci sed massa
-              consectetur dignissim a sit amet dui. Duis commodo vitae velit et
-              faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue
-              vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu
-              ipsum vel diam elementum tempor vel ut orci. Orci varius natoque
-              penatibus et magnis dis parturient montes, nascetur ridiculus mus
+              Informmation
+              <ul>
+                <li><p>Site Map</p></li>
+                <li><p>Search Terms</p></li>
+                <li><p>Advanced Search</p></li>
+                <li><p>About Us</p></li>
+              </ul>
+            </v-col>
+            <v-col sm="3" xs="3" lg="3">
+              Contact Us
+              <ul>
+                <li><p>Swinburne University of Technology</p></li>
+                <li><p>0123456789</p></li>
+                <li><p>102889939@swinburne.edu.au</p></li>
+              </ul>
             </v-col>
           </v-row>
         </v-card-text>
-
         <v-divider></v-divider>
-
         <v-card-title class="teal lighten-1">
           <strong class="subheading"
             >Get connected with us on social networks!</strong
@@ -167,6 +213,19 @@
 .carousel {
   position: relative;
   width: 1300px;
+}
+#block-advertisement-card {
+  color: #333;
+  display: block;
+  font-size: 22px;
+  line-height: 28px;
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: "proximanova", "Helvetica", Arial sans-serif;
+}
+span {
+  color: #0ab3a3;
 }
 </style>
 <script>
@@ -203,25 +262,28 @@ export default {
       ],
       cards: [
         {
-          title: "Pre-fab homes",
+          title: "Free delivery",
           text: "Discount 50%",
           src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          flex: 6,
+          flex: 3,
         },
         {
-          title: "Favorite road trips",
+          title: "Photography books",
+          text: "Featured",
           src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-          flex: 6,
+          flex: 3,
         },
         {
-          title: "Best airlines",
+          title: "Keep reading",
+          text: "Reading is the best for giving idea",
           src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-          flex: 6,
+          flex: 3,
         },
         {
-          title: "Best",
+          title: "New books",
+          text: "Sales 70%",
           src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-          flex: 6,
+          flex: 3,
         },
       ],
     };
